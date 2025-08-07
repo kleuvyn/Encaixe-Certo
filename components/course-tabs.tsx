@@ -79,59 +79,148 @@ const renderCourseSection = (courses: CourseItem[]) => (
   </Box>
 );
 
-export default function CourseTabs() {
+const adaTechLink = "https://sso.ada.tech/?redirect_uri=https%3A%2F%2Flms.ada.tech%2F";
+const dsaPythonLink = "https://www.datascienceacademy.com.br/course/fundamentos-de-linguagem-python-para-analise-de-dados-e-data-science";
+
+const frontEndCourses: CourseItem[] = [
+  { title: "HTML", hours: 4, links: [
+    { platform: "W3Schools", link: "https://www.w3schools.com/html/" },
+    { platform: "Ada.tech", link: adaTechLink }
+  ] },
+  { title: "CSS", hours: 6, links: [
+    { platform: "W3Schools", link: "https://www.w3schools.com/css/" },
+    { platform: "Ada.tech", link: adaTechLink }
+  ] },
+  { title: "JavaScript", hours: 3, links: [
+    { platform: "W3Schools", link: "https://www.w3schools.com/js/" },
+    { platform: "Ada.tech", link: adaTechLink }
+  ] },
+  { title: "Node.js", hours: 4, links: [
+    { platform: "W3Schools", link: "https://www.w3schools.com/nodejs/" },
+    { platform: "Ada.tech", link: adaTechLink }
+  ] },
+  { title: "React", hours: 46, links: [
+    { platform: "W3Schools", link: "https://www.w3schools.com/react/" },
+    { platform: "Ada.tech", link: adaTechLink }
+  ] },
+  { title: "API", hours: 2, links: [
+    { platform: "RapidAPI", link: "https://rapidapi.com/learn" },
+    { platform: "Ada.tech", link: adaTechLink }
+  ] },
+  { title: "Git", hours: 2, links: [
+    { platform: "W3Schools", link: "https://www.w3schools.com/git/" },
+    { platform: "Ada.tech", link: adaTechLink }
+  ] },
+];
+
+const backEndCourses: CourseItem[] = [
+  { title: "Back-end em Node.js", hours: 23, links: [
+    { platform: "Ada.tech", link: adaTechLink }
+  ] },
+  { title: "JavaScript", hours: 3, links: [
+    { platform: "W3Schools", link: "https://www.w3schools.com/js/" },
+    { platform: "Ada.tech", link: adaTechLink }
+  ] },
+  { title: "Node.js", hours: 4, links: [
+    { platform: "W3Schools", link: "https://www.w3schools.com/nodejs/" },
+    { platform: "Ada.tech", link: adaTechLink }
+  ] },
+  { title: "Banco de dados", hours: 2, links: [
+    { platform: "W3Schools - SQL", link: "https://www.w3schools.com/sql/" },
+    { platform: "W3Schools - PostgreSQL", link: "https://www.w3schools.com/postgresql/" },
+    { platform: "Ada.tech", link: adaTechLink }
+  ] },
+  { title: "Introdução à Infraestrutura Web", hours: 3, links: [
+    { platform: "DevMedia", link: "https://www.devmedia.com.br/infraestrutura-web" },
+    { platform: "Ada.tech", link: adaTechLink }
+  ] },
+  { title: "API", hours: 2, links: [
+    { platform: "RapidAPI", link: "https://rapidapi.com/learn" },
+    { platform: "Ada.tech", link: adaTechLink }
+  ] },
+  { title: "Git", hours: 2, links: [
+    { platform: "W3Schools", link: "https://www.w3schools.com/git/" },
+    { platform: "Ada.tech", link: adaTechLink }
+  ] },
+];
+
+const dataScienceCourses: CourseItem[] = [
+  { title: "Introdução a Data Science", hours: 2, links: [
+    { platform: "W3Schools", link: "https://www.w3schools.com/datascience/" },
+    { platform: "Ada.tech", link: adaTechLink }
+  ] },
+  { title: "Engenharia vs Ciência de Dados", hours: 2, links: [
+    { platform: "Ada.tech", link: adaTechLink }
+  ] },
+  { title: "Python: noções introdutórias", hours: 3, links: [
+    { platform: "W3Schools", link: "https://www.w3schools.com/python/" },
+    { platform: "Ada.tech", link: adaTechLink },
+    { platform: "DSA (vídeo)", link: dsaPythonLink }
+  ] },
+  { title: "Processamento e análise de dados", hours: 10, links: [
+    { platform: "Ada.tech", link: adaTechLink },
+    { platform: "DSA (vídeo)", link: dsaPythonLink }
+  ] },
+  { title: "Análise Exploratória de Dados", hours: 2, links: [
+    { platform: "Ada.tech", link: adaTechLink },
+    { platform: "DSA (vídeo)", link: dsaPythonLink }
+  ] },
+  { title: "Banco de dados", hours: 2, links: [
+    { platform: "W3Schools - SQL", link: "https://www.w3schools.com/sql/" },
+    { platform: "W3Schools - PostgreSQL", link: "https://www.w3schools.com/postgresql/" },
+    { platform: "Ada.tech", link: adaTechLink }
+  ] },
+  { title: "Fundamentos Matemáticos", hours: 3, links: [
+    { platform: "Ada.tech", link: adaTechLink }
+  ] },
+  { title: "Estatística", hours: 6, links: [
+    { platform: "W3Schools", link: "https://www.w3schools.com/statistics/" },
+    { platform: "Ada.tech", link: adaTechLink }
+  ] },
+  { title: "Estatística com Python", hours: 11, links: [
+    { platform: "Ada.tech", link: adaTechLink },
+    { platform: "DSA (vídeo)", link: dsaPythonLink }
+  ] },
+  { title: "Python for Finance", hours: 6, links: [
+    { platform: "Ada.tech", link: adaTechLink },
+    { platform: "DSA (vídeo)", link: dsaPythonLink }
+  ] },
+  { title: "Power BI", hours: 2, links: [
+    { platform: "Ada.tech", link: adaTechLink }
+  ] },
+];
+
+const LearningTabs = () => {
   const [value, setValue] = useState(0);
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 
-  const frontEndCourses: CourseItem[] = [
-    { title: "HTML", hours: 4, links: [{ platform: "W3Schools", link: "https://www.w3schools.com/html/" }, { platform: "Ada.tech", link: "#" }] },
-    { title: "CSS", hours: 6, links: [{ platform: "W3Schools", link: "https://www.w3schools.com/css/" }, { platform: "Ada.tech", link: "#" }] },
-    { title: "JavaScript", hours: 3, links: [{ platform: "W3Schools", link: "https://www.w3schools.com/js/" }, { platform: "Ada.tech", link: "#" }] },
-    { title: "Node.js", hours: 4, links: [{ platform: "W3Schools", link: "https://www.w3schools.com/nodejs/" }, { platform: "Ada.tech", link: "#" }] },
-    { title: "React", hours: 46, links: [{ platform: "W3Schools", link: "https://www.w3schools.com/react/" }, { platform: "Ada.tech", link: "#" }] },
-    { title: "API", hours: 2, links: [{ platform: "RapidAPI", link: "https://rapidapi.com/learn" }, { platform: "Ada.tech", link: "#" }] },
-    { title: "Git", hours: 2, links: [{ platform: "W3Schools", link: "https://www.w3schools.com/git/" }, { platform: "Ada.tech", link: "#" }] },
-  ];
-
-  const backEndCourses: CourseItem[] = [
-    { title: "Back-end em Node.js", hours: 23, links: [{ platform: "Ada.tech", link: "#" }] },
-    { title: "JavaScript", hours: 3, links: [{ platform: "W3Schools", link: "https://www.w3schools.com/js/" }, { platform: "Ada.tech", link: "#" }] },
-    { title: "Node.js", hours: 4, links: [{ platform: "W3Schools", link: "https://www.w3schools.com/nodejs/" }, { platform: "Ada.tech", link: "#" }] },
-    { title: "Banco de dados", hours: 2, links: [{ platform: "W3Schools - SQL", link: "https://www.w3schools.com/sql/" }, { platform: "W3Schools - PostgreSQL", link: "https://www.w3schools.com/postgresql/" }, { platform: "Ada.tech", link: "#" }] },
-    { title: "Introdução à Infraestrutura Web", hours: 3, links: [{ platform: "DevMedia", link: "https://www.devmedia.com.br/infraestrutura-web" }, { platform: "Ada.tech", link: "#" }] },
-    { title: "API", hours: 2, links: [{ platform: "RapidAPI", link: "https://rapidapi.com/learn" }, { platform: "Ada.tech", link: "#" }] },
-    { title: "Git", hours: 2, links: [{ platform: "W3Schools", link: "https://www.w3schools.com/git/" }, { platform: "Ada.tech", link: "#" }] },
-  ];
-  
-  const dataScienceCourses: CourseItem[] = [
-    { title: "Introdução a Data Science", hours: 2, links: [{ platform: "W3Schools", link: "https://www.w3schools.com/datascience/" }, { platform: "Ada.tech", link: "#" }] },
-    { title: "Engenharia vs Ciência de Dados", hours: 2, links: [{ platform: "Ada.tech", link: "#" }] },
-    { title: "Python: noções introdutórias", hours: 3, links: [{ platform: "W3Schools", link: "https://www.w3schools.com/python/" }, { platform: "Ada.tech", link: "#" }] },
-    { title: "Processamento e análise de dados", hours: 10, links: [{ platform: "Ada.tech", link: "#" }] },
-    { title: "Análise Exploratória de Dados", hours: 2, links: [{ platform: "Ada.tech", link: "#" }] },
-    { title: "Banco de dados", hours: 2, links: [{ platform: "W3Schools - SQL", link: "https://www.w3schools.com/sql/" }, { platform: "W3Schools - PostgreSQL", link: "https://www.w3schools.com/postgresql/" }, { platform: "Ada.tech", link: "#" }] },
-    { title: "Fundamentos Matemáticos", hours: 3, links: [{ platform: "Ada.tech", link: "#" }] },
-    { title: "Estatística", hours: 6, links: [{ platform: "W3Schools", link: "https://www.w3schools.com/statistics/" }, { platform: "Ada.tech", link: "#" }] },
-    { title: "Estatística com Python", hours: 11, links: [{ platform: "Ada.tech", link: "#" }] },
-    { title: "Python for Finance", hours: 6, links: [{ platform: "Ada.tech", link: "#" }] },
-    { title: "Power BI", hours: 2, links: [{ platform: "Ada.tech", link: "#" }] },
-  ];
-
   return (
     <Box sx={{ width: '100%' }}>
-      <Typography variant="h4" component="h1" className="text-center font-bold mb-6">
+      <Typography
+        variant="h4"
+        component="h1"
+        align="center"
+        sx={{ fontWeight: 'bold', mb: 4 }}
+      >
         Trilhas de Aprendizagem
       </Typography>
+
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="course tabs" centered>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          aria-label="Abas de trilhas de cursos"
+          centered
+        >
           <Tab label="FrontEnd" icon={<Code />} iconPosition="start" {...a11yProps(0)} />
           <Tab label="BackEnd" icon={<Server />} iconPosition="start" {...a11yProps(1)} />
           <Tab label="Data Science" icon={<Database />} iconPosition="start" {...a11yProps(2)} />
         </Tabs>
       </Box>
+
       <TabPanel value={value} index={0}>
         {renderCourseSection(frontEndCourses)}
       </TabPanel>
@@ -143,4 +232,6 @@ export default function CourseTabs() {
       </TabPanel>
     </Box>
   );
-}
+};
+
+export default LearningTabs;

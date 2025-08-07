@@ -7,7 +7,7 @@ import { BookOpen, ExternalLink } from 'lucide-react';
 
 interface Resource {
   name: string;
-  url?: string; // URL é opcional para a categoria 'Apps'
+  url?: string; // URL opcional para apps sem link
 }
 
 interface ResourceCategory {
@@ -16,14 +16,13 @@ interface ResourceCategory {
   resources: Resource[];
 }
 
-const resourcesData: ResourceCategory[] = [
+const resourcesList: ResourceCategory[] = [
   {
     title: "Sites de Cursos Gratuitos",
     description: "Plataformas online para aprender novas habilidades de forma autodidata.",
     resources: [
-      { name: "Ada - Plataforma de Educação em Tecnologia", url: "https://www.ada.tech/" },
+      { name: "Ada – Plataforma de Educação em Tecnologia", url: "https://sso.ada.tech/?redirect_uri=https%3A%2F%2Flms.ada.tech%2F" },
       { name: "Data Science Academy", url: "https://www.datascienceacademy.com.br/" },
-      { name: "Curso Gratuito Python - XP Educação", url: "https://www.xpeducacao.com.br/cursos-gratuitos/curso-de-python" },
       { name: "Coursera", url: "https://www.coursera.org/" },
       { name: "edX", url: "https://www.edx.org/" },
       { name: "Khan Academy", url: "https://www.khanacademy.org/" },
@@ -31,10 +30,10 @@ const resourcesData: ResourceCategory[] = [
       { name: "Codecademy", url: "https://www.codecademy.com/" },
       { name: "SoloLearn", url: "https://www.sololearn.com/" },
       { name: "Udemy", url: "https://www.udemy.com/" },
-      { name: "Mozilla Developer Network (MDN) Web Docs", url: "https://developer.mozilla.org/pt-BR/" },
+      { name: "MDN Web Docs", url: "https://developer.mozilla.org/pt-BR/" },
       { name: "DataCamp", url: "https://www.datacamp.com/" },
       { name: "Escola Virtual", url: "https://www.ev.org.br/" },
-      { name: "Escola Nacional de Administração Pública (ENAP)", url: "https://www.enap.gov.br/" },
+      { name: "ENAP – Administração Pública", url: "https://www.enap.gov.br/" },
     ],
   },
   {
@@ -67,24 +66,24 @@ const resourcesData: ResourceCategory[] = [
     title: "Apps de Estudo",
     description: "Aplicativos mobile para aprender e praticar programação em qualquer lugar.",
     resources: [
-      { name: "Panda | Python, R e SQL" },
-      { name: "Mimo | Aprenda a programar/codar" },
-      { name: "Motiro | Aprenda a programar" },
-      { name: "SoloLearn" },
-      { name: "Enki" },
-      { name: "Codecademy Go" },
-      { name: "Udacity" },
-      { name: "Khan Academy" },
-      { name: "Coursera" },
-      { name: "edX" },
-      { name: "Memrise" },
+      { name: "Panda – Python, R e SQL" },
+      { name: "Mimo – Aprenda a programar" },
+      { name: "Motiro – Aprenda a programar" },
+      { name: "SoloLearn", url: "https://www.sololearn.com/" },
+      { name: "Enki", url: "https://www.enki.com/" },
+      { name: "Codecademy Go", url: "https://www.codecademy.com/go" },
+      { name: "Udacity", url: "https://www.udacity.com/" },
+      { name: "Khan Academy", url: "https://www.khanacademy.org/" },
+      { name: "Coursera", url: "https://www.coursera.org/" },
+      { name: "edX", url: "https://www.edx.org/" },
+      { name: "Memrise", url: "https://www.memrise.com/" },
     ],
   },
   {
-    title: "Repositórios e Recursos no GitHub",
+    title: "Repositórios no GitHub",
     description: "Coleções de código, tutoriais e projetos open source para acelerar seu aprendizado.",
     resources: [
-      { name: "FreeCodeCamp", url: "https://github.com/freeCodeCamp" },
+      { name: "freeCodeCamp", url: "https://github.com/freeCodeCamp" },
       { name: "TensorFlow", url: "https://github.com/tensorflow/tensorflow" },
       { name: "TheAlgorithms", url: "https://github.com/TheAlgorithms" },
       { name: "Public APIs", url: "https://github.com/public-apis/public-apis" },
@@ -92,7 +91,7 @@ const resourcesData: ResourceCategory[] = [
       { name: "30 Seconds of Code", url: "https://github.com/30-seconds/30-seconds-of-code" },
       { name: "Frontend Mentor", url: "https://github.com/frontendmentor" },
       { name: "Real Python", url: "https://github.com/realpython" },
-      { name: "Mozilla Developer Network (MDN) Web Docs", url: "https://github.com/mdn/content" },
+      { name: "MDN Web Docs", url: "https://github.com/mdn/content" },
       { name: "BibliotecaDev", url: "https://github.com/KAYOKG/BibliotecaDev/tree/main/LivrosDev" },
       { name: "Esin", url: "https://github.com/esin" },
       { name: "Florin Pop", url: "https://github.com/florinpop17" },
@@ -104,7 +103,7 @@ const resourcesData: ResourceCategory[] = [
     resources: [
       { name: "Apostilando.com", url: "http://www.apostilando.com/" },
       { name: "Apostilas Opção", url: "https://www.apostilasopcao.com.br/" },
-      { name: "Portal do Professor - MEC", url: "http://portaldoprofessor.mec.gov.br/" },
+      { name: "Portal do Professor – MEC", url: "http://portaldoprofessor.mec.gov.br/" },
       { name: "Apostilas Gratuitas", url: "https://www.apostilasgratis.net/" },
       { name: "Apostilas Objetiva", url: "https://apostilasobjetiva.com.br/" },
     ],
@@ -122,7 +121,7 @@ const resourcesData: ResourceCategory[] = [
       { name: "Online2PDF", url: "https://online2pdf.com/" },
       { name: "PDF2JPG", url: "https://pdf2jpg.net/" },
       { name: "PDF Converter", url: "https://www.pdfconverter.com/" },
-      { name: "*PDF.io", url: "https://pdf.io/" },
+      { name: "PDF.io", url: "https://pdf.io/" },
     ],
   },
 ];
@@ -139,7 +138,7 @@ export default function ResourcesPage() {
         </p>
       </header>
 
-      {resourcesData.map((category, index) => (
+      {resourcesList.map((category, index) => (
         <section key={index}>
           <Card className="shadow-sm rounded-md border border-gray-200">
             <CardHeader className="border-b border-gray-100 p-6">
